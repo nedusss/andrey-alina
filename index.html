@@ -207,6 +207,9 @@ a{color:inherit}
 .in .divider{transform:scaleY(1)}
 .wishes .lead+.lead{margin-top:14px}
 .paw{width:40px;margin:0 auto 18px;color:var(--cream);opacity:.9}
+.paws{display:flex;justify-content:center;align-items:center;gap:16px;margin:0 auto 22px}
+.paws .paw{width:32px;margin:0}
+.paws .paw:nth-child(2){transform:translateY(-6px)}
 
 /* ================= АНКЕТА ================= */
 form{max-width:460px;margin:34px auto 0;text-align:left}
@@ -313,7 +316,7 @@ footer p{font-family:var(--serif);letter-spacing:.3em;font-size:14px;opacity:.75
 </div>
 
 <!-- ================= МУЗЫКА ================= -->
-<audio id="bgm" src="audio/music.mp3" preload="auto"></audio>
+<audio id="bgm" src="audio/music.mp3?v=full" preload="auto"></audio>
 <button class="music" id="musicBtn" type="button" aria-label="Выключить музыку">
   <svg class="on" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 18V6l11-2v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.8"/><circle cx="17.5" cy="16" r="2.8"/></svg>
   <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.8"/><circle cx="17.5" cy="16" r="2.8"/><path d="M3 3l18 18"/></svg>
@@ -399,12 +402,16 @@ footer p{font-family:var(--serif);letter-spacing:.3em;font-size:14px;opacity:.75
 <section class="sec dark wishes" id="wishes">
   <div class="wrap rv">
     <h2 class="title soft"><span class="cap">П</span>ожелания</h2>
-    <p class="lead">Если хотите подарить нам ценный и нужный подарок, мы будем очень благодарны за вклад в бюджет нашей молодой семьи</p>
+    <p class="lead">Если хотите подарить нам ценный и нужный подарок, мы будем очень благодарны за вклад в бюджет нашей молодой семьи.</p>
     <div class="divider"></div>
-    <svg class="paw" viewBox="0 0 64 64" aria-hidden="true"><g fill="currentColor"><ellipse cx="32" cy="44" rx="14" ry="12"/><ellipse cx="13" cy="28" rx="6" ry="8" transform="rotate(-15 13 28)"/><ellipse cx="51" cy="28" rx="6" ry="8" transform="rotate(15 51 28)"/><ellipse cx="24" cy="14" rx="6" ry="8"/><ellipse cx="40" cy="14" rx="6" ry="8"/></g></svg>
+    <div class="paws" aria-hidden="true">
+      <svg class="paw" viewBox="0 0 64 64"><g fill="currentColor"><ellipse cx="32" cy="44" rx="14" ry="12"/><ellipse cx="13" cy="28" rx="6" ry="8" transform="rotate(-15 13 28)"/><ellipse cx="51" cy="28" rx="6" ry="8" transform="rotate(15 51 28)"/><ellipse cx="24" cy="14" rx="6" ry="8"/><ellipse cx="40" cy="14" rx="6" ry="8"/></g></svg>
+      <svg class="paw" viewBox="0 0 64 64"><g fill="currentColor"><ellipse cx="32" cy="44" rx="14" ry="12"/><ellipse cx="13" cy="28" rx="6" ry="8" transform="rotate(-15 13 28)"/><ellipse cx="51" cy="28" rx="6" ry="8" transform="rotate(15 51 28)"/><ellipse cx="24" cy="14" rx="6" ry="8"/><ellipse cx="40" cy="14" rx="6" ry="8"/></g></svg>
+      <svg class="paw" viewBox="0 0 64 64"><g fill="currentColor"><ellipse cx="32" cy="44" rx="14" ry="12"/><ellipse cx="13" cy="28" rx="6" ry="8" transform="rotate(-15 13 28)"/><ellipse cx="51" cy="28" rx="6" ry="8" transform="rotate(15 51 28)"/><ellipse cx="24" cy="14" rx="6" ry="8"/><ellipse cx="40" cy="14" rx="6" ry="8"/></g></svg>
+    </div>
     <p class="lead">Нам будет особенно приятно, если вместо цветов вы поддержите маленькое доброе дело.</p>
-    <p class="lead">Мы будем рады корму для собачек из приюта или небольшому денежному пожертвованию на их содержание.</p>
-    <p class="lead">Пусть в этот день немного любви и тепла достанется не только нам, но и тем, кто особенно нуждается в заботе. 🤍</p>
+    <p class="lead">Мы будем рады корму для собачек из приюта или денежному пожертвованию на их содержание.</p>
+    <p class="lead">Пусть в этот день немного любви и тепла достанется не только нам, но и тем, кто особенно нуждается в заботе 🤍</p>
   </div>
 </section>
 <div class="tear" data-from="dark" data-to="cream"></div>
@@ -556,10 +563,10 @@ footer p{font-family:var(--serif);letter-spacing:.3em;font-size:14px;opacity:.75
     <ellipse cx="84" cy="66" rx="9" ry="3" fill="#fff" opacity=".45" transform="rotate(-30 84 66)" filter="url(#soft1)"/>
   </svg>`;
   document.querySelectorAll('.seal .half,.seal .whole').forEach(h=>h.innerHTML=svg);
-  document.querySelectorAll('#intro .face').forEach(fc=>fc.innerHTML='<div class="flap"></div><div class="lace-strip"></div>');
+  document.querySelectorAll('#intro .face').forEach(fc=>fc.innerHTML='<div class="flap"></div>');
 
   /* ---------- музыка: стартует после открытия конверта, сразу со слов ---------- */
-  const MUSIC_START=0;   // в файле только вступление-минус (0–13,3 с), до начала слов; играет по кругу
+  const MUSIC_START=0;   // полный трек без обрезки; по окончании начинается сначала
   const bgm=document.getElementById('bgm'), mBtn=document.getElementById('musicBtn');
   let fadeT;
   function fadeTo(v,ms){ clearInterval(fadeT); const st=bgm.volume, t0=performance.now(); fadeT=setInterval(()=>{ const k=Math.min(1,(performance.now()-t0)/ms); bgm.volume=st+(v-st)*k; if(k>=1)clearInterval(fadeT); },40); }
@@ -573,9 +580,7 @@ footer p{font-family:var(--serif);letter-spacing:.3em;font-size:14px;opacity:.75
     mBtn.classList.add('show','playing');
   }
   // мягкое затухание в конце и повтор с начала (слова не звучат)
-  let fading=false;
-  bgm.addEventListener('timeupdate',()=>{ if(!fading && bgm.duration && bgm.duration-bgm.currentTime<1.2){ fading=true; fadeTo(0,1100); } });
-  bgm.addEventListener('ended',()=>{ fading=false; bgm.currentTime=0; bgm.play(); fadeTo(.8,1200); });
+  bgm.addEventListener('ended',()=>{ bgm.currentTime=0; bgm.play(); });
   mBtn.addEventListener('click',()=>{
     if(bgm.paused){ bgm.play(); fadeTo(.8,600); mBtn.classList.remove('muted'); mBtn.classList.add('playing'); mBtn.setAttribute('aria-label','Выключить музыку'); }
     else { bgm.pause(); mBtn.classList.add('muted'); mBtn.classList.remove('playing'); mBtn.setAttribute('aria-label','Включить музыку'); }
