@@ -59,17 +59,20 @@ a{color:inherit}
 #intro .door{position:absolute;top:0;bottom:0;width:50.05%;overflow:hidden;transition:transform 1.6s cubic-bezier(.65,0,.25,1) .5s}
 #intro .door.l{left:0;transform-origin:0 50%}
 #intro .door.r{right:0;transform-origin:100% 50%}
-#intro .face{position:absolute;top:0;bottom:0;width:200%;background:radial-gradient(70% 45% at 0% 70%,rgba(120,125,120,.10),transparent 70%),radial-gradient(70% 45% at 100% 70%,rgba(120,125,120,.10),transparent 70%),linear-gradient(180deg,#f6f6f4 0%,#f1f2ef 55%,#eceeea 100%)}
+#intro .face{position:absolute;top:0;bottom:0;width:200%;background:radial-gradient(60% 40% at 0% 78%,rgba(90,95,85,.16),transparent 70%),radial-gradient(60% 40% at 100% 78%,rgba(90,95,85,.16),transparent 70%),linear-gradient(180deg,#ecede8 0%,#e6e7e1 60%,#dfe0da 100%)}
 #intro .door.l .face{left:0}
 #intro .door.r .face{right:0}
 #intro .face::before{content:"";position:absolute;inset:0;opacity:.6;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .4 0 0 0 0 .38 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E")}
-#intro .flap{position:absolute;left:0;right:0;top:0;height:var(--tip);clip-path:polygon(0 0,100% 0,100% 76%,50% 100%,0 76%);background:linear-gradient(180deg,#fbfbfa,#f4f4f1);filter:drop-shadow(0 3px 4px rgba(0,0,0,.08))}
+#intro .flap-wrap{position:absolute;left:0;right:0;top:0;height:var(--tip);z-index:2;filter:drop-shadow(0 10px 14px rgba(40,42,30,.18)) drop-shadow(0 2px 2px rgba(40,42,30,.14))}
+#intro .flap{position:absolute;inset:0;clip-path:polygon(0 0,100% 0,100% 76%,50% 100%,0 76%);background:linear-gradient(180deg,#fdfdfc 0%,#f8f8f5 65%,#f1f1ed 100%)}
+#intro .flap::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(255,255,255,.9),transparent 6%);opacity:.6}
+#intro .seams{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 #intro .flap-shadow{position:absolute;left:0;right:0;top:0;height:var(--tip);pointer-events:none}
 #intro .door.l{box-shadow:inset -10px 0 18px -14px rgba(0,0,0,0)}
 #intro.open .door.l{box-shadow:inset -10px 0 18px -14px rgba(0,0,0,.35)}
 #intro.open .door.r{box-shadow:inset 10px 0 18px -14px rgba(0,0,0,.35)}
 #intro .face .lace-strip{position:absolute;left:0;right:0;bottom:-6px;margin:0;opacity:.95;filter:saturate(0) brightness(1.04)}
-#intro .flap{filter:drop-shadow(0 6px 10px rgba(0,0,0,.07))!important}
+
 #intro .inner{position:absolute;inset:0;z-index:3;color:#2b2622;text-align:center;pointer-events:none}
 #intro .etitle{position:absolute;left:0;right:0;top:27%;color:#2c2826;font-family:"Oranienbaum",var(--serif);text-transform:uppercase;transition:opacity .5s,transform .8s}
 #intro .etitle small{display:block;font-size:clamp(22px,6vw,32px);line-height:1}
@@ -563,7 +566,7 @@ footer p{font-family:var(--serif);letter-spacing:.3em;font-size:14px;opacity:.75
     <ellipse cx="84" cy="66" rx="9" ry="3" fill="#fff" opacity=".45" transform="rotate(-30 84 66)" filter="url(#soft1)"/>
   </svg>`;
   document.querySelectorAll('.seal .half,.seal .whole').forEach(h=>h.innerHTML=svg);
-  document.querySelectorAll('#intro .face').forEach(fc=>fc.innerHTML='<div class="flap"></div>');
+  document.querySelectorAll('#intro .face').forEach(fc=>fc.innerHTML='<svg class="seams" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 100 L50 68 L100 100" fill="none" stroke="rgba(60,62,50,.16)" stroke-width="1" vector-effect="non-scaling-stroke"/><path d="M0 99.4 L50 68.6 L100 99.4" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1" vector-effect="non-scaling-stroke"/></svg><div class="flap-wrap"><div class="flap"></div></div>');
 
   /* ---------- музыка: стартует после открытия конверта, сразу со слов ---------- */
   const MUSIC_START=0;   // полный трек без обрезки; по окончании начинается сначала
